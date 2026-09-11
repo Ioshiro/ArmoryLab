@@ -1,0 +1,229 @@
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+@import '@fontsource/ibm-plex-mono/600.css';
+@import '@fontsource/ibm-plex-mono/700.css';
+
+:root {
+	--ground: #0c0f0c;
+	--paper: #141810;
+	--paper-2: #1b2116;
+	--ink: #c4b48a;
+	--ink-dim: #8a9378;
+	--amber: #d6a11a;
+	--alarm: #c45c4a;
+	--sage: #8a9378;
+	--ghost: #4a4e3a;
+	--line: #3a3f30;
+	--focus: #d6a11a;
+	--font: 'IBM Plex Mono', ui-monospace, monospace;
+	--gap-block: 2.75rem;
+	--sheet-pad: 1.1rem 1.25rem;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	margin: 0;
+	min-height: 100%;
+	background: var(--ground);
+	color: var(--ink);
+	font-family: var(--font);
+	font-size: 14px;
+	line-height: 1.45;
+	font-variant-numeric: tabular-nums;
+	letter-spacing: -0.03em;
+}
+
+::selection {
+	background: var(--amber);
+	color: var(--ground);
+}
+
+:focus-visible {
+	outline: 2px solid var(--focus);
+	outline-offset: 2px;
+}
+
+input,
+select,
+button,
+textarea {
+	font: inherit;
+	color: inherit;
+	letter-spacing: inherit;
+	font-variant-numeric: inherit;
+}
+
+input,
+select,
+textarea {
+	caret-color: var(--amber);
+}
+
+body {
+	scrollbar-color: var(--amber) var(--paper);
+	scrollbar-width: thin;
+}
+
+a {
+	color: var(--amber);
+}
+
+button {
+	background: transparent;
+	border: 1px solid var(--line);
+	color: var(--ink);
+	padding: 0.28rem 0.55rem;
+	cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+	border-color: var(--amber);
+	color: var(--amber);
+}
+
+button:disabled {
+	color: var(--ghost);
+	border-color: var(--ghost);
+	cursor: not-allowed;
+}
+
+button[aria-pressed='true'] {
+	background-color: var(--amber);
+	background-image: repeating-linear-gradient(
+		90deg,
+		var(--amber),
+		var(--amber) 3px,
+		#b88814 3px,
+		#b88814 6px
+	);
+	color: var(--ground);
+	border-color: var(--amber);
+}
+
+select,
+input[type='search'],
+input[type='text'] {
+	background: var(--ground);
+	border: 1px solid var(--line);
+	color: var(--ink);
+	padding: 0.28rem 0.5rem;
+}
+
+select:disabled,
+input:disabled {
+	color: var(--ghost);
+	border-color: var(--ghost);
+}
+
+.sheet {
+	background: var(--paper);
+	padding: var(--sheet-pad);
+}
+
+.cut {
+	height: var(--gap-block);
+}
+
+h1,
+h2,
+h3 {
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: -0.03em;
+	margin: 0 0 0.45rem;
+}
+
+h1 {
+	font-size: 1.35rem;
+	line-height: 1.2;
+}
+
+h2 {
+	font-size: 0.95rem;
+	margin-top: 0.2rem;
+}
+
+p {
+	margin: 0 0 0.75rem;
+	max-width: 72ch;
+}
+
+.muted {
+	color: var(--ink-dim);
+}
+
+.alarm {
+	color: var(--alarm);
+}
+
+.amber {
+	color: var(--amber);
+}
+
+.ghost-cell {
+	color: var(--ghost);
+	border-bottom: 1px dashed var(--ghost);
+}
+
+table.data {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 12px;
+}
+
+table.data th,
+table.data td {
+	text-align: left;
+	padding: 0.28rem 0.45rem;
+	border-bottom: 1px solid var(--line);
+	white-space: nowrap;
+}
+
+table.data th {
+	position: sticky;
+	top: 0;
+	background: var(--paper-2);
+	font-weight: 600;
+	text-transform: uppercase;
+	font-size: 11px;
+	letter-spacing: 0.02em;
+	cursor: pointer;
+}
+
+table.data th:hover {
+	color: var(--amber);
+}
+
+table.data tbody tr:hover {
+	background: #1f2618;
+}
+
+table.data tbody tr.pinned {
+	background: repeating-linear-gradient(
+		90deg,
+		#1f2618,
+		#1f2618 4px,
+		#262c1c 4px,
+		#262c1c 8px
+	);
+}
+
+table.data td.num {
+	text-align: right;
+	font-variant-numeric: tabular-nums;
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}

@@ -1,0 +1,21 @@
+{
+  "name": "armory-lab",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev --host --port 4173",
+    "build": "vite build",
+    "preview": "vite preview --host --port 4173",
+    "extract": "node scripts/extract-weapons.mjs"
+  },
+  "devDependencies": {
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@sveltejs/adapter-static": "3",
+    "@sveltejs/kit": "2",
+    "@sveltejs/vite-plugin-svelte": "5",
+    "svelte": "5",
+    "typescript": "^7.0.2",
+    "vite": "6"
+  }
+}
