@@ -101,9 +101,21 @@ export type Dataset = {
 	weapons: Weapon[];
 };
 
-export type Cue = 'all' | 'melee' | 'firearm' | 'explosive' | 'debug';
+export type Cue =
+	| 'all'
+	| 'base:axe'
+	| 'base:blunt'
+	| 'base:smallblunt'
+	| 'base:smallblade'
+	| 'base:longblade'
+	| 'base:spear'
+	| 'firearm'
+	| 'explosive'
+	| 'unarmed'
+	| 'debug';
 
 export type MetricKey =
+	| 'htkScript'
 	| 'expectedStanding'
 	| 'avgDamage'
 	| 'weight'

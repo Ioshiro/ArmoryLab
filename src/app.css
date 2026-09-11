@@ -16,8 +16,8 @@
 	--line: #3a3f30;
 	--focus: #d6a11a;
 	--font: 'IBM Plex Mono', ui-monospace, monospace;
-	--gap-block: 2.75rem;
-	--sheet-pad: 1.1rem 1.25rem;
+	--gap-block: 1.35rem;
+	--sheet-pad: 0.85rem 1rem;
 }
 
 * {
@@ -226,4 +226,15 @@ table.data td.num {
 	overflow: hidden;
 	clip: rect(0, 0, 0, 0);
 	border: 0;
+}
+
+input[type='number'] {
+	-moz-appearance: textfield;
+	appearance: textfield;
+}
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	appearance: none;
+	margin: 0;
 }

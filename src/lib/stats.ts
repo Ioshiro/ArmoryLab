@@ -6,8 +6,8 @@ export function matchesCue(w: Weapon, cue: Cue): boolean {
 	if (cue === 'debug') return w.debug || w.skillKey === 'debug';
 	if (cue === 'firearm') return w.family === 'firearm';
 	if (cue === 'explosive') return w.family === 'explosive' || w.family === 'thrown';
-	if (cue === 'melee') return w.family === 'melee' || w.family === 'unarmed';
-	return true;
+	if (cue === 'unarmed') return w.family === 'unarmed' || w.skillKey === 'unarmed';
+	return w.skillKey === cue;
 }
 
 export function quantile(sorted: number[], q: number): number {

@@ -16,17 +16,17 @@ export const SKILL_ORDER = [
 ] as const;
 
 export const SKILL_IT: Record<string, string> = {
-	'base:axe': 'Ascia',
-	'base:blunt': 'Contundente 2H',
-	'base:smallblunt': 'Contundente 1H',
-	'base:smallblade': 'Lama corta',
-	'base:longblade': 'Lama lunga',
-	'base:spear': 'Lancia',
-	firearm: 'Da fuoco',
+	'base:axe': 'Axe',
+	'base:blunt': 'Long Blunt',
+	'base:smallblunt': 'Short Blunt',
+	'base:smallblade': 'Short Blade',
+	'base:longblade': 'Long Blade',
+	'base:spear': 'Spear',
+	firearm: 'Firearm',
 	explosive: 'Esplosivo',
-	thrown: 'Da lancio',
-	unarmed: 'Mani nude',
-	'base:improvised': 'Solo improvvisata',
+	thrown: 'Thrown',
+	unarmed: 'Stomp',
+	'base:improvised': 'Improvised',
 	debug: 'Debug',
 	uncategorized: 'Senza skill'
 };
@@ -41,14 +41,54 @@ export const FAMILY_IT: Record<string, string> = {
 };
 
 export const CUE_IT: Record<Cue, string> = {
-	all: 'TUTTO',
-	melee: 'MISCHIA',
-	firearm: 'DA FUOCO',
-	explosive: 'ESPLOSIVI',
-	debug: 'DEBUG'
+	all: 'Tutte',
+	'base:axe': 'Axe',
+	'base:blunt': 'Long Blunt',
+	'base:smallblunt': 'Short Blunt',
+	'base:longblade': 'Long Blade',
+	'base:smallblade': 'Short Blade',
+	'base:spear': 'Spear',
+	firearm: 'Firearm',
+	unarmed: 'Stomp',
+	explosive: 'Esplosivi',
+	debug: 'Debug'
+};
+
+export const CUE_ORDER: Cue[] = [
+	'all',
+	'base:axe',
+	'base:blunt',
+	'base:smallblunt',
+	'base:longblade',
+	'base:smallblade',
+	'base:spear',
+	'firearm',
+	'unarmed',
+	'explosive',
+	'debug'
+];
+
+export const CUE_PAT: Record<Cue, string> = {
+	all: 'cue-all',
+	'base:axe': 'cue-melee',
+	'base:blunt': 'cue-melee',
+	'base:smallblunt': 'cue-melee',
+	'base:longblade': 'cue-blade',
+	'base:smallblade': 'cue-blade',
+	'base:spear': 'cue-melee',
+	firearm: 'cue-firearm',
+	unarmed: 'cue-stomp',
+	explosive: 'cue-explosive',
+	debug: 'cue-debug'
 };
 
 export const METRIC_IT: Record<MetricKey, { short: string; long: string; unit: string; cite: string }> = {
+	htkScript: {
+		short: 'HTK script',
+		long: 'HP shambler 1.95 / danno atteso in piedi — skill 0, no perk, no TZonyne',
+		unit: 'colpi',
+		cite: 'Stima Armory: stessa HP Normal di Combat Lab. Combat Lab applica perk, forza e tier.'
+	},
 	expectedStanding: {
 		short: 'Danno atteso in piedi',
 		long: 'Danno medio × (1 + pCrit × (max(2, CritDmg) − 1)) — colpo in piedi, non aimAtFloor',
@@ -147,6 +187,10 @@ export function skillLabel(key: string): string {
 
 export function metricValue(w: Weapon, key: MetricKey): number | null {
 	switch (key) {
+		case 'htkScript': {
+			const d = w.derived.expectedStanding;
+			return d > 0 ? 1.95 / d : null;
+		}
 		case 'expectedStanding':
 			return w.derived.expectedStanding;
 		case 'avgDamage':
